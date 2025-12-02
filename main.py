@@ -137,20 +137,20 @@ if __name__ == "__main__":
     print("Running character pull simulations...")
     print("="*80 + "\n")
     
-    #Endfield pool: 50 basic balance, 70 release balance -> 开服120抽，后续每版本70抽
-    zmd_result_1 = zmd_pool.pull_only_when_have_80_pulls_till_get_target_no_topup(50000, 50, 70, POOL_LIST_ZMD)
+    #Endfield pool: 40 basic balance, 70 release balance -> 开服110抽，后续每版本70抽
+    zmd_result_1 = zmd_pool.pull_only_when_have_80_pulls_till_get_target_no_topup(100000, 40, 70, POOL_LIST_ZMD)
     print_result_no_of_targets(zmd_result_1, "Test 1 xiao bao pai")
-    zmd_result_2 = zmd_pool.pull_only_when_have_120_pulls_till_get_target_no_topup(50000, 50, 70, POOL_LIST_ZMD)
+    zmd_result_2 = zmd_pool.pull_only_when_have_120_pulls_till_get_target_no_topup(100000, 40, 70, POOL_LIST_ZMD)
     print_result_no_of_targets(zmd_result_2, "Test 2 da bao pai")
-    zmd_result_3 = zmd_pool.pull_for_each_target_char_with_topup(50000, 50, 70, POOL_LIST_ZMD)
+    zmd_result_3 = zmd_pool.pull_for_each_target_char_with_topup(100000, 40, 70, POOL_LIST_ZMD)
     print_result_no_of_topups(zmd_result_3, "Test 3 quan tu jian dang")
 
-    # Gacha Standard pool: 50 basic, 70 release balance -> 开服120抽，后续每版本70抽
-    gs_result_1 = gs_pool.pull_for_each_pool_till_get_target_no_topup(50000, 50, 70, POOL_LIST_GS)
+    # Gacha Standard pool: 40 basic, 70 release balance -> 开服110抽，后续每版本70抽
+    gs_result_1 = gs_pool.pull_for_each_pool_till_get_target_no_topup(100000, 40, 70, POOL_LIST_GS)
     print_result_no_of_targets(gs_result_1, "Test 4 dian chi zi")
-    gs_result_2 = gs_pool.pull_only_when_have_90_pulls_till_get_target_no_topup(50000, 50, 70, POOL_LIST_GS)    
+    gs_result_2 = gs_pool.pull_only_when_have_90_pulls_till_get_target_no_topup(100000, 40, 70, POOL_LIST_GS)    
     print_result_no_of_targets(gs_result_2, "Test 5 xiao bao pai")
-    gs_result_3 = gs_pool.pull_for_each_target_char_with_topup(50000, 50, 70, POOL_LIST_GS)
+    gs_result_3 = gs_pool.pull_for_each_target_char_with_topup(100000, 40, 70, POOL_LIST_GS)
     print_result_no_of_topups(gs_result_3, "Test 6 quan tu jian dang")
 
     

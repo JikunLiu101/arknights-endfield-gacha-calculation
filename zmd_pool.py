@@ -66,10 +66,9 @@ def pull_only_when_have_80_pulls_till_get_target_no_topup(number_of_scenarios: i
     total_results = []
     
     for _ in range(number_of_scenarios):
-        owned_chars = []
+        owned_chars = set()
         pull_balance = basic_balance
         CURRENT_WATER_LEVEL_ZMD = 0
-        IS_BIG = False
         temp_balance = 0
         
         for pool_idx, pool in enumerate(pool_list):
@@ -91,10 +90,10 @@ def pull_only_when_have_80_pulls_till_get_target_no_topup(number_of_scenarios: i
                     else:
                         pull_balance -= 1
                     if result == target:
-                        owned_chars.append(target)
+                        owned_chars.add(target)
                         break
                     elif result is not None:
-                        owned_chars.append(result)
+                        owned_chars.add(result)
             temp_balance = 0
             if count >= 60:
                 temp_balance = 10 # used for next pool
@@ -109,7 +108,7 @@ def pull_only_when_have_120_pulls_till_get_target_no_topup(number_of_scenarios: 
     total_results = []
     
     for _ in range(number_of_scenarios):
-        owned_chars = []
+        owned_chars = set()
         pull_balance = basic_balance
         CURRENT_WATER_LEVEL_ZMD = 0
         temp_balance = 0
@@ -135,10 +134,10 @@ def pull_only_when_have_120_pulls_till_get_target_no_topup(number_of_scenarios: 
                     else:
                         pull_balance -= 1
                     if result == target:
-                        owned_chars.append(target)
+                        owned_chars.add(target)
                         break
                     elif result is not None:
-                        owned_chars.append(result)
+                        owned_chars.add(result)
             temp_balance = 0
             if count >= 60:
                 temp_balance += 10 # used for next pool
@@ -153,7 +152,7 @@ def pull_for_each_target_char_with_topup(number_of_scenarios: int, basic_balance
     total_results = []
     
     for _ in range(number_of_scenarios):
-        owned_chars = []
+        owned_chars = set()
         pull_balance = basic_balance
         CURRENT_WATER_LEVEL_ZMD = 0
         temp_balance = 0
@@ -184,10 +183,10 @@ def pull_for_each_target_char_with_topup(number_of_scenarios: int, basic_balance
                     result = pool.pull()
                     count +=1
                 if result == target:
-                    owned_chars.append(target)
+                    owned_chars.add(target)
                     break
                 elif result is not None:
-                    owned_chars.append(result)
+                    owned_chars.add(result)
             temp_balance = 0
             if count >= 60:
                 temp_balance += 10 # used for next pool
