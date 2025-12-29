@@ -5,7 +5,8 @@ IS_BIG = False
 
 class CharacterPoolGs:
     """
-    Class of Character pool for Gacha Standard.
+    现在，是幻想时间！
+    假如终末地使用的是80抽小保底，120抽大保底，大小保底均可继承的角色池机制，那么每个角色池的实现可以使用这个类来模拟。
     """
     def __init__(self, target_char_code, non_target_char_code_1, non_target_char_code_2, normal_char_codes):
         self.target_char_code = target_char_code
@@ -53,7 +54,7 @@ class CharacterPoolGs:
         except Exception as e:
             return e
 
-   
+@DeprecationWarning   
 def pull_for_each_pool_till_get_target_no_topup(number_of_scenarios: int, basic_balance: int, release_balance: int, pool_list: list[CharacterPoolGs]):
     # mock number of scenarios, where each senario keeps pulling till get the target character, no top up.
     total_results = []
@@ -94,6 +95,7 @@ def pull_for_each_pool_till_get_target_no_topup(number_of_scenarios: int, basic_
         total_results.append(owned_chars)
     return total_results
 
+@DeprecationWarning   
 def pull_only_when_have_90_pulls_till_get_target_no_topup(number_of_scenarios: int, basic_balance: int, release_balance: int, pool_list: list[CharacterPoolGs]):
     # mock number of scenarios, where each senario only pulls when having balance of 80 pulls. Stop pulling after having the target character, no top up.
     global CURRENT_WATER_LEVEL_GS
@@ -137,6 +139,7 @@ def pull_only_when_have_90_pulls_till_get_target_no_topup(number_of_scenarios: i
     
     return total_results
 
+@DeprecationWarning
 def pull_for_each_target_char_with_topup(number_of_scenarios: int, basic_balance: int, release_balance: int, pool_list: list[CharacterPoolGs]):
     # mock number of scenarios, where each senario only stops pulling after having the target character, top up when needed.
     global CURRENT_WATER_LEVEL_GS
