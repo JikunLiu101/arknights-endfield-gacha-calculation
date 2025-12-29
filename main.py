@@ -10,8 +10,8 @@ from zmd_pool import CharacterPoolZmd
 import zmd_pool
 
 # 如果自己跑测试，可以调整这些数值：
-BASIC_BALANCE_CHAR = 121 # 数据参考：让你爱上学习@B站，不含版本福利与每日 （176-55）
-RELEASE_BALANCE_CHAR = 55 # 模拟数据，可调整
+BASIC_BALANCE_CHAR = 123 # 数据参考：让你爱上学习@B站，不含版本福利与每日 （176-53）
+RELEASE_BALANCE_CHAR = 53 # 模拟数据，可调整
 BASIC_BALANCE_WEAP = 2 # 无具体数据，可调整
 RELEASE_BALANCE_WEAP = 2 # 模拟数据，可调整
 
@@ -165,6 +165,11 @@ def print_result_no_of_topups(results: list, title:str):
         avg_weap_topups = sum(weap_topups) / len(weap_topups)
         median_weap_topups = statistics.median(weap_topups)
         ok_weap_topups = statistics.quantiles(weap_topups, n=100)[79]
+        
+        # 计算既不充角色也不充武器的玩家占比
+        no_topup_count = sum(1 for c, w in zip(char_topups, weap_topups) if c == 0 and w == 0)
+        no_topup_percentage = (no_topup_count / len(char_topups)) * 100
+        
         print("当前模拟开服{}抽角色，{}抽武器，每版本{}抽角色，{}抽武器".format(
             BASIC_BALANCE_CHAR, BASIC_BALANCE_WEAP, RELEASE_BALANCE_CHAR, RELEASE_BALANCE_WEAP))
         print(f"Average character topups needed: {avg_char_topups:.2f}")
@@ -174,6 +179,8 @@ def print_result_no_of_topups(results: list, title:str):
         print(f"Average weapon topups needed: {avg_weap_topups:.2f}")
         print(f"Median weapon topups needed: {median_weap_topups:.2f}")
         print(f"80% people top up less than (weap): {ok_weap_topups:.2f}")
+        print()
+        print(f"既不充值角色也不充值武器的玩家占比: {no_topup_count}/{len(char_topups)} ({no_topup_percentage:.2f}%)")
         
         topup_dist = collections.Counter(char_topups)
         print("\nCharacter topup distribution:")
